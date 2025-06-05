@@ -1,0 +1,16 @@
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+
+# Dependencies
+node_modules/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
