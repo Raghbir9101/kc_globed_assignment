@@ -24,7 +24,7 @@ const SearchBar: React.FC = () => {
     dispatch(setSearchQuery(""));
     if (inputRef.current) {
       inputRef.current.focus();
-      inputRef.current.value = "";
+      inputRef.current.value = ""
     }
   };
 
@@ -41,7 +41,7 @@ const SearchBar: React.FC = () => {
         ref={inputRef}
         type="text"
         placeholder="Search notes"
-        value={query}
+        defaultValue={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
