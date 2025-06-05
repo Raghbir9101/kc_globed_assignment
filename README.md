@@ -9,7 +9,6 @@ QuickNotes is a modern note-taking application inspired by Google Keep, built wi
 - 📌 Pin important notes
 - 🎨 Customize note colors
 - 🔍 Search through notes
-- 🌓 Dark mode support
 - 🔄 Real-time updates
 - 📱 Responsive design
 
