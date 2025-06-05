@@ -9,7 +9,6 @@ QuickNotes is a modern note-taking application inspired by Google Keep, built wi
 - 📌 Pin important notes to the top
 - 🎨 Customize note colors with a color picker
 - 🔍 Instant search through notes
-- 🔗 Share notes with other users
 - 🌈 Beautiful UI with Shadcn components
 - 📱 Fully responsive design
 - ⚡ Fast and optimized with Vite
@@ -24,11 +23,11 @@ QuickNotes is a modern note-taking application inspired by Google Keep, built wi
 - Shadcn UI components for beautiful UI elements
 - Vite for fast development and build
 - Axios for API requests
-- React Toaster for notifications
+- Sonner Toast for notifications
 
 ### Backend
 - Django 5.0+ with Django REST Framework
-- SQLite3 database (can be configured for PostgreSQL)
+- PostgreSQL database (can be configured for any SQL Database)
 - JWT authentication with PyJWT
 - Django CORS headers for cross-origin requests
 - Python-dotenv for environment management
