@@ -32,10 +32,8 @@ const RegisterPage: React.FC = () => {
         password,
       });
 
-      // Registration successful
       navigate('/login');
     } catch (err) {
-      // Error is handled by the auth reducer
     }
   };
 

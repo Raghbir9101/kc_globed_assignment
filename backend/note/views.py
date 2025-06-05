@@ -69,11 +69,12 @@ def notes_list_create(request):
     print(f"Request method: {request.method}")
     print(f"Request data: {request.data}")
     print(f"User: {request.user.username} with email: {request.user.email}")
+    
     if request.method == 'GET':
-        notes = Note.objects.all()
+        notes = Note.objects.filter(user=request.user)
         serializer = NoteSerializer(notes, many=True)
         return Response(serializer.data)
-
+        
     elif request.method == 'POST':
         serializer = NoteSerializer(data={**request.data, 'user': request.user.id})
         print(f"Serializer data: {serializer.initial_data}")
@@ -92,7 +93,7 @@ def notes_list_create(request):
 @jwt_required
 def notes_detail(request, id):
     try:
-        note = Note.objects.get(id=id)
+        note = Note.objects.get(id=id,user=request.user)
     except Note.DoesNotExist:
         return Response({'error': 'Note not found'}, status=status.HTTP_404_NOT_FOUND)
 

@@ -8,11 +8,11 @@ import {
     logout
 } from '@/store/slices/authSlice';
 import {
-    setNotes,
     addNote,
     updateNote as updateNoteAction,
     deleteNote as deleteNoteAction,
-    setError as setNotesError
+    setError as setNotesError,
+    setNotes
 } from '@/store/slices/notesSlice';
 import { AppDispatch } from '@/store';
 import { toast } from "sonner"
@@ -39,21 +39,20 @@ export class AuthService {
         dispatch(setLoading(true));
         try {
             const responsePromise = api.post('/register', userData);
-            const response = await responsePromise;
             toast.promise(responsePromise, {
                 loading: 'Registering...',
                 success: 'Registration successful',
                 error: 'Registration failed',
             });
+            const response = await responsePromise;
             dispatch(registerSuccess());
             return response.data;
         } catch (err: any) {
             dispatch(setError(err.response?.data?.error || 'Registration failed'));
             throw err;
         }
-    }
-
-    logout(dispatch: AppDispatch) {
+    }    logout(dispatch: AppDispatch) {
+        dispatch(setNotes([]));  // Clear notes first
         dispatch(logout());
         toast.success('Logout successful', {
             description: 'You have been logged out.',

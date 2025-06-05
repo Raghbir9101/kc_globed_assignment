@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { setNotes } from './notesSlice';
 
 interface AuthState {
   token: string | null;
@@ -47,7 +48,6 @@ const authSlice = createSlice({
       state.user = null;
       state.error = null;
       localStorage.removeItem('token');
-      localStorage.removeItem('isAuthenticated');
     },
     clearError: (state) => {
       state.error = null;
