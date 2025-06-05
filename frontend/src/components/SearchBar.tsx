@@ -24,6 +24,7 @@ const SearchBar: React.FC = () => {
     dispatch(setSearchQuery(""));
     if (inputRef.current) {
       inputRef.current.focus();
+      inputRef.current.value = "";
     }
   };
 
