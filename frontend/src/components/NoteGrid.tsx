@@ -19,9 +19,10 @@ const NoteGrid: React.FC = () => {
       note.content.toLowerCase().includes(searchQuery.toLowerCase())
     )
     : notes;
-
-  const pinnedNotes = filteredNotes.filter(note => note.is_pinned);
-  const unpinnedNotes = filteredNotes.filter(note => !note.is_pinned);
+  
+  console.log(filteredNotes)
+  const pinnedNotes = (filteredNotes || []).filter(note => note.is_pinned);
+  const unpinnedNotes = (filteredNotes || []).filter(note => !note.is_pinned);
 
   if (filteredNotes.length === 0) {
     return (

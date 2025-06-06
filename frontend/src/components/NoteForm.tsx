@@ -93,7 +93,7 @@ const NoteForm: React.FC<NoteFormProps> = ({
           });
         } else {
           await NotesService.createNote(dispatch, {
-            title: trimmedTitle,
+            title: trimmedTitle || "No Title",
             content: trimmedContent,
             color,
             is_pinned: false
@@ -131,6 +131,12 @@ const NoteForm: React.FC<NoteFormProps> = ({
   return (
     <form
       ref={formRef}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+      onClick={handleFocus}
+      onFocus={handleFocus}
       className={`${getColorClass()} rounded-lg shadow-md transition-all overflow-hidden mb-6 mx-auto max-w-md border border-gray-200`}
     >
       {isExpanded && (
