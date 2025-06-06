@@ -53,36 +53,9 @@ const NoteForm: React.FC<NoteFormProps> = ({
     }
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (formRef.current && !formRef.current.contains(e.target as Node)) {
-      handleSubmit();
-    }
-  };
-
-  useEffect(() => {
-    if (isExpanded) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isExpanded, title, content]);
-
-  const handleFocus = () => {
-    if (!isExpanded) {
-      setIsExpanded(true);
-      setTimeout(() => {
-        if (contentInputRef.current) {
-          contentInputRef.current.focus();
-        }
-      }, 0);
-    }
-  };
-
   const handleSubmit = async () => {
     const trimmedTitle = title.trim();
     const trimmedContent = content.trim();
-
     if (trimmedTitle || trimmedContent) {
       try {
         if (isEditing && noteId) {
@@ -116,6 +89,34 @@ const NoteForm: React.FC<NoteFormProps> = ({
     }
   };
 
+  const handleClickOutside = (e: MouseEvent) => {
+    if (formRef.current && !formRef.current.contains(e.target as Node)) {
+      handleSubmit();
+    }
+  };
+
+  useEffect(() => {
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isExpanded, title, content]);
+
+  const handleFocus = () => {
+    if (!isExpanded) {
+      setIsExpanded(true);
+      setTimeout(() => {
+        if (contentInputRef.current) {
+          contentInputRef.current.focus();
+        }
+      }, 0);
+    }
+  };
+
+  
+
   const handleCancel = () => {
     if (onCancel) {
       onCancel();
@@ -127,6 +128,7 @@ const NoteForm: React.FC<NoteFormProps> = ({
       setShowColorPicker(false);
     }
   };
+
 
   return (
     <form

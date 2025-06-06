@@ -9,7 +9,6 @@ const NoteGrid: React.FC = () => {
   const { notes, searchQuery } = useAppSelector(state => state.notes);
 
   useEffect(() => {
-    // Fetch notes when component mounts
     NotesService.fetchNotes(dispatch);
   }, [dispatch]);
 
@@ -20,7 +19,6 @@ const NoteGrid: React.FC = () => {
     )
     : notes;
   
-  console.log(filteredNotes)
   const pinnedNotes = (filteredNotes || []).filter(note => note.is_pinned);
   const unpinnedNotes = (filteredNotes || []).filter(note => !note.is_pinned);
 
