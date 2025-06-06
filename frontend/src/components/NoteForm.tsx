@@ -93,7 +93,7 @@ const NoteForm: React.FC<NoteFormProps> = ({
           });
         } else {
           await NotesService.createNote(dispatch, {
-            title: trimmedTitle || "No Title",
+            title: trimmedTitle,
             content: trimmedContent,
             color,
             is_pinned: false

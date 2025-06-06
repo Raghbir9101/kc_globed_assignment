@@ -22,8 +22,8 @@ class Note(models.Model):
         PURPLE = 'purple', 'Purple'
         PINK = 'pink', 'Pink'
 
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    title = models.CharField(max_length=255, default="")
+    content = models.TextField(default="")
     is_pinned = models.BooleanField(default=False)
     color = models.CharField(
         max_length=10,
